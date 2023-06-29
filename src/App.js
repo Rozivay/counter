@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+export default class App extends Component {
+ 
+ state = {
+  num:0
+ }
+  render() {
+const {num} = this.state
+    return (
+      <div>
+      
+        <div className="App" style={{background : 'red' }}>
+     <h1>{num}</h1>
+    <p>
+      {num === 15 ? 'max' : num === 1 ? 'min' : num === 11 ? 'get out of here': ''}
+    </p>
+    <button onClick= { () => {
+      if(num < 15){
+        this.setState({num:num+1})
+      }
+     
+    }}>+</button>
+
+    <button onClick={() => {
+    if(num > 0){
+      this.setState({num:num-1})
+    };
+      
+    }}>-</button>
+
+    <button onClick={() => {
+          this.setState({num:0})
+    }}>reset</button>
+
+    <button onClick={() => {
+        this.setState({num:num+5})
+    }}>+5</button>
+
+    <button onClick={() => {
+         this.setState({num:1})
+    }}>min</button>
+
+<button onClick={() => {
+        this.setState({num:15})
+    }}>max</button>
+
+
+
     </div>
-  );
+      </div>
+    )
+  }
 }
-
-export default App;
